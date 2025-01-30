@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <conio.h>
+
+int main() {
+    int p1Score = 0, p2Score = 0;
+    char p1Choice, p2Choice;
+
+    while (p1Score < 5 && p2Score < 5) {
+        printf("Player 1 (r/p/s): ");
+        p1Choice = getch();
+        printf("*\n");
+
+        printf("Player 2 (r/p/s): ");
+        p2Choice = getch();
+        printf("*\n");
+
+        if ((p1Choice == p2Choice) || 
+            (p1Choice != 'r' && p1Choice != 'p' && p1Choice != 's') || 
+            (p2Choice != 'r' && p2Choice != 'p' && p2Choice != 's')) {
+            printf("It's a tie or invalid input!\n");
+        } else if ((p1Choice == 'r' && p2Choice == 's') ||
+                   (p1Choice == 'p' && p2Choice == 'r') ||
+                   (p1Choice == 's' && p2Choice == 'p')) {
+            printf("Player 1 wins this round!\n");
+            p1Score++;
+        } else {
+            printf("Player 2 wins this round!\n");
+            p2Score++;
+        }
+    }
+
+    printf("Game over! Player %d wins!\n", p1Score == 5 ? 1 : 2);
+    printf("Press any key to exit...\n");
+    getch();
+    return 0;
+}
