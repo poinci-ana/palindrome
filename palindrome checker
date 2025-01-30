@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include <stdbool.h>
+
+
+bool is_palindrome(char string[])
+{
+int middle = strlen(string) / 2;
+int len = strlen(string);
+
+for (int i = 0; i < middle; i++)
+  if (string[i] != string [len-i-1])
+  return false;
+  return true; 
+}
+
+
+int main () {
+
+char string[100];
+
+printf("Enter a string here; ");
+fgets(string, sizeof(string), stdin);
+
+printf("Before: %s", string);
+int length = strlen(string); strlwr(string);
+int j = 0;
+
+for (int i = 0; i < length; i++) {
+{
+  if ((isalpha(string[i])) || (isdigit(string[i]))) 
+  {string[j] = string[i]; j++;}
+}
+}
+string[j] = '\0';
+ 
+printf("After: %s \n", string);
+
+if (is_palindrome(string))
+{printf("%s is a palindrome\n", string);}
+else
+{printf("%s is not a palindrome\n");};
+
+return 0;
+}
